@@ -1,0 +1,37 @@
+hr {
+border-top:2px #8c8b8b;
+background-color: #fff;
+}
+
+.info {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.info label {
+   display: inline;
+   float:left;
+}
+.info span {
+  position: absolute;
+  left: 0px;
+  bottom: -30px;
+  font-size:12px;
+}
+
+.container {
+  padding-left: 20px;
+  height: 80px;
+}
+
+.add{
+  background-color: blue; 
+  position: absolute;
+  right: 600px ;
+    height: 40px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
