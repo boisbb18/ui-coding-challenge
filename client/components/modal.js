@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import { bindActionCreators } from 'redux';
-import { close } from '../actions/actions.js';
+import { close, save } from '../actions/actions.js';
 class Modal extends React.Component {
 
   constructor(props) {
@@ -11,9 +11,12 @@ class Modal extends React.Component {
       Address: ['Street', 'City', 'State',' Zip Code'],
       Teams: ['Team 1', 'Team 2', 'Team 3']
     }
+    this.handleWords = this.handleWords.bind(this);
     this.addAnother = this.addAnother.bind(this);
+    this.handleSave = this.handleSave.bind(this);
     this.state = {
-      added: 4
+      added: 4,
+      words: {}
     }
   }
   addAnother() {
@@ -21,6 +24,26 @@ class Modal extends React.Component {
     this.setState ({
         added: this.state.added + 1
     })
+  }
+  handleWords(text,key) {
+    let temp = this.state.words;
+    temp[key] = text;
+    this.setState({
+      words: temp
+    })
+  }
+  handleSave() {
+    let arr = [];
+    for (let i = 0; i < this.inputs[this.props.view].length; i++) {
+      let title = this.inputs[this.props.view][i];
+      if (!this.state.words[title]) {
+        alert('Please fill out all the blanks');
+        return;
+      }
+      arr.push(this.state.words[title]);
+    }
+    this.props.save({ name: this.props.view, value: arr });
+    this.props.close();
   }
   render() {
     let modaloverlay = {
@@ -41,11 +64,11 @@ class Modal extends React.Component {
          <h3> {this.props.view} </h3>
         </div>
         <div className="input-container">
-          { this.inputs[this.props.view].map((item) => {
+          { this.inputs[this.props.view].map((item,index) => {
            return ( 
            <div className="modal-input">
-           <label for="name">{item}: </label>
-            <input type="text" id={item}/>
+           <label htmlFor="name">{item}: </label>
+            <input type="text" id={item} defaultValue={(this.props.info[this.props.view][0] === "None Added") ? "" : this.props.info[this.props.view][index]} onChange={e => this.handleWords(e.target.value,item)} />
             </div>
             ) 
            })
@@ -58,7 +81,7 @@ class Modal extends React.Component {
         </div>
         <div className="buttons"> 
           <div className="cancel" onClick={this.props.close}>Cancel</div>
-          <div className="save" onClick={this.props.close}>Save</div>
+          <div className="save" onClick={this.handleSave}>Save</div>
         </div>
         </div>
         <div style={modaloverlay} onClick={this.props.close}/>
@@ -70,11 +93,12 @@ class Modal extends React.Component {
 const mapStateToProps = (state) => {
   return {
     modalView: state.modalView,
-    view: state.view
+    view: state.view,
+    info: state.info
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ close }, dispatch);
+  return bindActionCreators({ close, save }, dispatch);
 };
 
 
