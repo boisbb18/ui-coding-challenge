@@ -26,22 +26,25 @@ background-color: #fff;
 }
 
 .add{
-  background-color: blue; 
+  background: #1E90FF; 
   position: absolute;
   right: 600px ;
     height: 40px;
+    width: 140px;
     color: white;
     border-radius: 5px;
-    text-align: center;
     font-size: 16px;
 }
 .modal-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  z-index: 11;
-  background: #fff;
+    width: 350px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+    z-index: 11;
+    background: white;
 }
 
 .modal-overlay {
@@ -52,4 +55,74 @@ background-color: #fff;
   left: 0px;
   z-index: 10;
   background: rgba(0, 0, 0, 0.3);
+}
+
+.text-center {
+  text-align: center;
+}
+.boxclose{
+    float:right;
+    cursor:pointer;
+    color: white;
+    border-radius: 26px;
+    background: #00FFFF;
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+
+.boxclose:before {
+    content: "×";
+}
+.buttons {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+.cancel {
+  text-align:center;
+  width:50%;
+  background: #4682B4;
+  font-size:20px;
+  color: white;
+  height: 35px;
+  float: left;
+}
+.save {
+  text-align: center;
+  width:50%;
+  background: #1E90FF ;
+   font-size:20px;
+   color: white;
+   height: 35px;
+  float: right;
+}
+
+.input-container {
+  position: relative;
+  height:200px;
+  overflow-y: auto;
+}
+.modal-input  {
+  display: inline;
+  padding-left:40px;
+}
+.modal-input label {
+  display: inline-block;
+  width: 100px;
+  padding-right: 10px;
+  padding-top: 15px;
+}
+
+.modal-input input {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.forTeams {
+  padding-left: 40px;
+  padding-top: 10px;
+  color: #1E90FF;
 }

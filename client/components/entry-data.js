@@ -5,6 +5,16 @@ import {  open } from '../actions/actions.js';
 class EntryData extends React.Component {
   constructor(props) {
     super(props);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal() {
+    if (this.props.name === 'Favourite Teams') {
+      this.props.open('Teams');
+    } else {
+      this.props.open(this.props.name);
+    }
+      
   }
 
   render() {
@@ -14,8 +24,8 @@ class EntryData extends React.Component {
         <div className="info">
           <label > {this.props.name} </label>
           { (this.props.name === 'Favourite Teams')
-          ?  <button className="add" onClick={this.props.open}> Add Teams </button>
-          :  <button className="add" onClick={this.props.open}> Add {this.props.name} </button>
+          ?  <button className="add" onClick={this.openModal}> Add Teams </button>
+          :  <button className="add" onClick={this.openModal}> Add {this.props.name} </button>
           }
           <span className="added">None Added</span>
           </div>
@@ -23,6 +33,7 @@ class EntryData extends React.Component {
       )
   }
 }
+
 
 
 const mapDispatchToProps = (dispatch) => {
