@@ -14,7 +14,6 @@ class App extends React.Component {
     return (
       <div>
       <Modal isOpen={this.props.modalView}>
-          <h1>Modal Test</h1>
       </Modal>
       <h2> Sports Magazine Settings </h2>
       { this.info.map(keys => 
