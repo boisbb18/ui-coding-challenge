@@ -14,10 +14,22 @@ background-color: #fff;
    float:left;
 }
 .info span {
+  display: block;
   position: absolute;
   left: 0px;
   bottom: -30px;
-  font-size:12px;
+  font-size:14px;
+  height: 10px;
+  padding-top: 5px;
+}
+
+.teams {
+  display: block;
+  position: absolute;
+  padding-top: 20px;
+  height: 50px;
+  font-size:14px;
+  left: 0px;
 }
 
 .container {
