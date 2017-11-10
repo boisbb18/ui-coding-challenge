@@ -8,14 +8,19 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.info = ['Name','Address','Teams'];
+    this.info = ['Name','Address','Teams']; //will pass to EntryData container to create button and data information
   }
 
   render() {
+    // when this.props.modalView === true, it will show our modal
+    // creating EntryData container
     return (
       <div>
-      <Modal isOpen={this.props.modalView} />
-      <h2> Sports Magazine Settings </h2>
+      <div className="header">
+        <p id="text"> Sports Magazine </p>
+      </div>
+      <Modal isOpen={this.props.modalView} /> 
+      <div className="title">Sports Magazine Settings </div>
       { this.info.map(item => 
         <EntryData key={item} name={item} />
       )}

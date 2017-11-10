@@ -7,6 +7,7 @@ class Modal extends React.Component {
 
   constructor(props) {
     super(props);
+    // we will iterate through this.inputs in order to  show our labels(element inside of array) and text inputs
     this.inputs = {
       Name: ['First Name', 'Last Name'],
       Address: ['Street', 'City', 'State',' Zip Code'],
@@ -16,15 +17,15 @@ class Modal extends React.Component {
     this.addAnother = this.addAnother.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.state = {
-      added: 4,
-      words: {}
+      added: 4,   // for adding a new team 
+      words: {}  // will help us to display entered words
     }
   }
   addAnother() {
     this.inputs.Teams.push('Team ' + this.state.added);
     this.setState ({
         added: this.state.added + 1
-    })
+    }) // incrementing the state.added after we adding
   }
   handleWords(text,key) {
     let temp = this.state.words;
@@ -35,6 +36,9 @@ class Modal extends React.Component {
   }
   handleSave() {
     let arr = [];
+    // we will iterate though our this.inputs array to make sure that user filled all text inputs
+    // if there are empty text inputs, we will throw an alert
+    // otherwise, send our saved information to our server, which we will add that information on textfile;
     for (let i = 0; i < this.inputs[this.props.view].length; i++) {
       let title = this.inputs[this.props.view][i];
       if (!this.state.words[title]) {

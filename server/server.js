@@ -6,7 +6,7 @@ const fs = require('fs');
 const os = require('os');
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('client/public'));
@@ -16,6 +16,8 @@ app.listen(3000, () => {
 });
 
 app.post('/add',(req,res) => {
+  // it will append passed in value to our data.txt
+  // if there are no error, responds with statusCode 200
   fs.appendFile(path.join(__dirname, './data.txt'),JSON.stringify(req.body) + os.EOL,(err) => {
     if(err) {
       console.log('Error -->',err);
@@ -27,5 +29,5 @@ app.post('/add',(req,res) => {
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('client/public/index.html'));
+  res.sendFile(path.resolve('client/public/index.html'));  // to dsiplay our app on http://localhost:3000/
 });

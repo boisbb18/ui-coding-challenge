@@ -2,6 +2,22 @@ hr {
 border-top:2px #8c8b8b;
 background-color: #fff;
 }
+.header {
+  color:white;
+  height:50px;
+  background: #A9A9A9;
+  font-size: 40px;
+}
+#text {
+  margin-left: 20px;
+}
+
+.title {
+  color: #A9A9A9;
+  padding-top: 20px;
+  margin-left: 20px;
+  font-size: 30px;
+}
 
 .info {
   position: relative;
@@ -12,6 +28,7 @@ background-color: #fff;
 .info label {
    display: inline;
    float:left;
+   font-weight: bold;
 }
 .info span {
   display: block;
@@ -21,6 +38,7 @@ background-color: #fff;
   font-size:14px;
   height: 10px;
   padding-top: 5px;
+  color: #A9A9A9;
 }
 
 .teams {
@@ -30,6 +48,7 @@ background-color: #fff;
   height: 50px;
   font-size:14px;
   left: 0px;
+  color:#A9A9A9;
 }
 
 .container {
