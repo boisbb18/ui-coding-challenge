@@ -10,12 +10,17 @@ class EntryData extends React.Component {
   }
 
   openModal() {
+      //passing the title view(this.props.name is a title)
       this.props.open(this.props.name);     
     }
+// This component will create our containerw with label, data information and button.
 
   render() {
     // const obj = { Name: ' ', Teams: '\n',Address: ', ' };
       let information = this.props.info[this.props.name].join(' ');
+      // will check if we saved any information,
+      // if no ==> our button text would say Add and data information(span) would say None Added
+      // if true ==> our button text changes to Edit and actual data information will be displayed
     return (
       <div className="container">
         <hr />
@@ -23,12 +28,12 @@ class EntryData extends React.Component {
            {
             (this.props.name === 'Teams')
          ?  <label >Favourite Teams</label>
-         : <label > {this.props.name} </label>
+         : <label >{this.props.name}</label>
              }
             {
               (information === 'None Added')
            ? <div>
-               <button className="add" onClick={this.openModal}> Add {this.props.name} </button>
+               <button className="add" onClick={this.openModal}>Add {this.props.name}</button>
                <span className="added">None Added</span>
               </div>
            : <div> 
