@@ -2,8 +2,8 @@ import React from 'react';
 import EntryData from './entry-data.js';
 import Modal from './modal.js';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import {  open } from '../actions/actions.js';
+import { bindActionCreators } from 'redux';
+import {  save } from '../actions/actions.js';
 class App extends React.Component {
 
   constructor(props) {
@@ -16,8 +16,8 @@ class App extends React.Component {
       <div>
       <Modal isOpen={this.props.modalView} />
       <h2> Sports Magazine Settings </h2>
-      { this.info.map(keys => 
-        <EntryData name={keys} />
+      { this.info.map(item => 
+        <EntryData key={item} name={item} />
       )}
       </div>
     );
@@ -31,9 +31,10 @@ const mapStateToProps = (state) => {
     view: state.view
   };
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({ open }, dispatch);
-// };
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ save }, dispatch);
+};
 
 
-export default connect(mapStateToProps) (App);
+export default connect(mapStateToProps,mapDispatchToProps) (App);

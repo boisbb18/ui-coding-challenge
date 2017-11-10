@@ -32,7 +32,11 @@ class EntryData extends React.Component {
                <span className="added">None Added</span>
               </div>
            : <div> 
-              <button className="add" onClick={this.openModal}> Edit {this.props.name} </button>
+               {
+                (this.props.name === 'Teams')
+             ? <button className="add" onClick={this.openModal}> Update {this.props.name} </button>
+             : <button className="add" onClick={this.openModal}> Edit {this.props.name} </button>
+              }
               <EnteredData name={this.props.name} info={this.props.info}/>
               </div>
             }

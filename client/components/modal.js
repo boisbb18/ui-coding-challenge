@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'; 
 import { bindActionCreators } from 'redux';
 import { close, save } from '../actions/actions.js';
+import axios from 'axios';
 class Modal extends React.Component {
 
   constructor(props) {
@@ -42,8 +43,14 @@ class Modal extends React.Component {
       }
       arr.push(this.state.words[title]);
     }
-    this.props.save({ name: this.props.view, value: arr });
-    this.props.close();
+    axios.post('/add',{name:this.props.view,value: arr})
+      .then((res) => {
+        this.props.save({ name: this.props.view, value: arr });
+        this.props.close();  
+      })
+      .catch((err) => {
+        console.log('Error --> ',err);
+      })
   }
   render() {
     let modaloverlay = {
